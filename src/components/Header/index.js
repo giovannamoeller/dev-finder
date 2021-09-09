@@ -1,8 +1,10 @@
+import { HeaderContainer } from './styles';
+
 export function Header() {
   return (
-    <header>
-      <img src="" alt="" />
-      <span>Light<img src="" alt="" /></span>
-    </header>
+    <HeaderContainer>
+      <img src="" alt="Logo - devfinder" />
+      <span>Light<img src="" alt="Light icon to change color theme" /></span>
+    </HeaderContainer>
   )
 }
