@@ -1,22 +1,28 @@
 import { ProfileUserContainer, ImageContainer, InfoContainer } from "./styles";
 import { MapPin, Link, Twitter, Briefcase } from "react-feather";
-import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../../hooks/UserContext";
+import { useState, useEffect } from "react";
 
-export function ProfileUser() {
+export function ProfileUser({ username }) {
   const [userInformations, setUserInformations] = useState({});
-  const { value } = useContext(UserContext);
 
   useEffect(() => {
+    console.log(username);
+
     async function fetchAPI() {
-      const response = await fetch(`https://api.github.com/users/${value}`);
+      const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
+
+      const created_at = new Date(data.created_at).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
 
       setUserInformations({
         name: data.name,
         username: data.userName,
         bio: data.bio,
-        created_at: new Date(data.created_at),
+        created_at,
         avatar_url: data.avatar_url,
         login: data.login,
         location: data.location,
@@ -30,7 +36,7 @@ export function ProfileUser() {
     }
 
     fetchAPI();
-  }, [value]);
+  }, [username]);
 
   return (
     <ProfileUserContainer>
@@ -43,14 +49,7 @@ export function ProfileUser() {
             <h1>{userInformations.name}</h1>
             <span>{userInformations.username}</span>
           </div>
-          <span className="date">
-            Joined{" "}
-            {userInformations.created_at.toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </span>
+          <span className="date">Joined {userInformations.created_at}</span>
         </div>
 
         <div className="profileInfo">
