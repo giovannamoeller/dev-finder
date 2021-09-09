@@ -40,62 +40,68 @@ export function ProfileUser({ username }) {
 
   return (
     <ProfileUserContainer>
-      <ImageContainer>
-        <img src={userInformations.avatar_url} alt="" />
-      </ImageContainer>
-      <InfoContainer>
-        <div className="nameInfo">
-          <div className="name">
-            <h1>{userInformations.name}</h1>
-            <span>{userInformations.username}</span>
-          </div>
-          <span className="date">Joined {userInformations.created_at}</span>
-        </div>
+      {username === "" ? (
+        <h1>Search for a GitHub User!</h1>
+      ) : (
+        <>
+          <ImageContainer>
+            <img src={userInformations.avatar_url} alt="" />
+          </ImageContainer>
+          <InfoContainer>
+            <div className="nameInfo">
+              <div className="name">
+                <h1>{userInformations.name}</h1>
+                <span>{userInformations.username}</span>
+              </div>
+              <span className="date">Joined {userInformations.created_at}</span>
+            </div>
 
-        <div className="profileInfo">
-          <span className="bio">{userInformations.bio}</span>
+            <div className="profileInfo">
+              <span className="bio">{userInformations.bio}</span>
 
-          <div className="profile__infos">
-            <div className="repos">
-              <span>Repos</span>
-              <strong>{userInformations.repos}</strong>
-            </div>
-            <div className="followers">
-              <span>Followers</span>
-              <strong>{userInformations.followers}</strong>
-            </div>
-            <div className="following">
-              <span>Following</span>
-              <strong>{userInformations.following}</strong>
-            </div>
-          </div>
+              <div className="profile__infos">
+                <div className="repos">
+                  <span>Repos</span>
+                  <strong>{userInformations.repos}</strong>
+                </div>
+                <div className="followers">
+                  <span>Followers</span>
+                  <strong>{userInformations.followers}</strong>
+                </div>
+                <div className="following">
+                  <span>Following</span>
+                  <strong>{userInformations.following}</strong>
+                </div>
+              </div>
 
-          <div className="personal__infos">
-            <div>
-              <div className="location">
-                <MapPin color="#2778FF" strokeWidth={1.5} size={24} />
-                <span>
-                  {userInformations.location || "No location available"}
-                </span>
-              </div>
-              <div className="link">
-                <Link color="#2778FF" strokeWidth={1.5} size={24} />
-                <span>{userInformations.blog || "No blog"}</span>
+              <div className="personal__infos">
+                <div>
+                  <div className="location">
+                    <MapPin color="#2778FF" strokeWidth={1.5} size={24} />
+                    <span>
+                      {userInformations.location || "No location available"}
+                    </span>
+                  </div>
+                  <div className="link">
+                    <Link color="#2778FF" strokeWidth={1.5} size={24} />
+                    <span>{userInformations.blog || "No blog"}</span>
+                  </div>
+                </div>
+                <div>
+                  <div className="twitter">
+                    <Twitter color="#2778FF" strokeWidth={1.5} size={24} />
+                    <span>{userInformations.twitter || "No twitter"}</span>
+                  </div>
+                  <div className="company">
+                    <Briefcase color="#2778FF" strokeWidth={1.5} size={24} />
+                    <span>{userInformations.company || "No company"}</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <div className="twitter">
-                <Twitter color="#2778FF" strokeWidth={1.5} size={24} />
-                <span>{userInformations.twitter || "No twitter"}</span>
-              </div>
-              <div className="company">
-                <Briefcase color="#2778FF" strokeWidth={1.5} size={24} />
-                <span>{userInformations.company || "No company"}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </InfoContainer>
+          </InfoContainer>
+        </>
+      )}
     </ProfileUserContainer>
   );
 }

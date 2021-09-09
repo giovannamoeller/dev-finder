@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 
 export function Home() {
-  const [username, setUsername] = useState('giovannamoeller');
+  const [username, setUsername] = useState('');
   return (
       <Container>
         <Header/>
