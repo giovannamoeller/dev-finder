@@ -75,22 +75,22 @@ export function ProfileUser({ username }) {
               <div className="location">
                 <MapPin color="#2778FF" strokeWidth={1.5} size={24} />
                 <span>
-                  {userInformations.location || "No location available."}
+                  {userInformations.location || "No location available"}
                 </span>
               </div>
               <div className="link">
                 <Link color="#2778FF" strokeWidth={1.5} size={24} />
-                <span>{userInformations.blog || "No blog."}</span>
+                <span>{userInformations.blog || "No blog"}</span>
               </div>
             </div>
             <div>
               <div className="twitter">
                 <Twitter color="#2778FF" strokeWidth={1.5} size={24} />
-                <span>{userInformations.twitter || "No twitter."}</span>
+                <span>{userInformations.twitter || "No twitter"}</span>
               </div>
               <div className="company">
                 <Briefcase color="#2778FF" strokeWidth={1.5} size={24} />
-                <span>{userInformations.company || "No company."}</span>
+                <span>{userInformations.company || "No company"}</span>
               </div>
             </div>
           </div>

@@ -27,6 +27,11 @@ export const InputContainer = styled.form`
     border-radius: 0.5rem;
     font-size: 1rem;
     color: #FFF;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: #195BCB;
+    }
   }
 
   svg {
