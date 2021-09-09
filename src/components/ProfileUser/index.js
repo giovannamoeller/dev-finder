@@ -1,23 +1,22 @@
-import { ProfileUserContainer, ImageContainer, InfoContainer } from './styles';
-import { MapPin, Link, Twitter, Briefcase  } from 'react-feather';
-import { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../../hooks/UserContext';
+import { ProfileUserContainer, ImageContainer, InfoContainer } from "./styles";
+import { MapPin, Link, Twitter, Briefcase } from "react-feather";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../hooks/UserContext";
 
 export function ProfileUser() {
-
   const [userInformations, setUserInformations] = useState({});
   const { value } = useContext(UserContext);
 
   useEffect(() => {
-
     async function fetchAPI() {
       const response = await fetch(`https://api.github.com/users/${value}`);
       const data = await response.json();
-  
+
       setUserInformations({
         name: data.name,
         username: data.userName,
         bio: data.bio,
+        created_at: new Date(data.created_at),
         avatar_url: data.avatar_url,
         login: data.login,
         location: data.location,
@@ -31,7 +30,6 @@ export function ProfileUser() {
     }
 
     fetchAPI();
-
   }, [value]);
 
   return (
@@ -46,7 +44,12 @@ export function ProfileUser() {
             <span>{userInformations.username}</span>
           </div>
           <span className="date">
-            Joined 25 jan 2021.
+            Joined{" "}
+            {userInformations.created_at.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </span>
         </div>
 
@@ -71,27 +74,29 @@ export function ProfileUser() {
           <div className="personal__infos">
             <div>
               <div className="location">
-                <MapPin color="#2778FF" strokeWidth={1.5} size={24}/>
-                <span>{userInformations.location || 'No location available.'}</span>
+                <MapPin color="#2778FF" strokeWidth={1.5} size={24} />
+                <span>
+                  {userInformations.location || "No location available."}
+                </span>
               </div>
               <div className="link">
-                <Link color="#2778FF" strokeWidth={1.5} size={24}/>
-                <span>{userInformations.blog || 'No blog.'}</span>
+                <Link color="#2778FF" strokeWidth={1.5} size={24} />
+                <span>{userInformations.blog || "No blog."}</span>
               </div>
             </div>
             <div>
               <div className="twitter">
-                <Twitter color="#2778FF" strokeWidth={1.5} size={24}/>
-                <span>{userInformations.twitter || 'No twitter.'}</span>
+                <Twitter color="#2778FF" strokeWidth={1.5} size={24} />
+                <span>{userInformations.twitter || "No twitter."}</span>
               </div>
               <div className="company">
-                <Briefcase color="#2778FF" strokeWidth={1.5} size={24}/>
-                <span>{userInformations.company || 'No company.'}</span>
+                <Briefcase color="#2778FF" strokeWidth={1.5} size={24} />
+                <span>{userInformations.company || "No company."}</span>
               </div>
             </div>
           </div>
         </div>
       </InfoContainer>
     </ProfileUserContainer>
-  )
+  );
 }
