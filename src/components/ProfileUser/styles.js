@@ -4,7 +4,6 @@ export const ProfileUserContainer = styled.section`
   padding: 3rem;
   width: 100%;
   display: flex;
-  height: 54vh;
   margin-top: 3rem;
   border-radius: 0.5rem;
   background: #1F2A48;
