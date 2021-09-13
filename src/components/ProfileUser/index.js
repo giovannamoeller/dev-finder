@@ -2,7 +2,7 @@ import { ProfileUserContainer, ImageContainer, InfoContainer } from "./styles";
 import { MapPin, Link, Twitter, Briefcase } from "react-feather";
 import { useState, useEffect } from "react";
 
-export function ProfileUser({ username }) {
+export function ProfileUser({ username, themeMode, ...props }) {
   const [userInformations, setUserInformations] = useState({});
   const [error, setError] = useState("");
 
@@ -10,7 +10,7 @@ export function ProfileUser({ username }) {
     async function fetchAPI() {
       const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
-
+      
       if (data.message === "Not Found") {
         setError("User not found.");
         return;
@@ -25,7 +25,7 @@ export function ProfileUser({ username }) {
 
       setUserInformations({
         name: data.name,
-        username: data.userName,
+        username: data.login,
         bio: data.bio,
         created_at,
         avatar_url: data.avatar_url,
@@ -44,20 +44,20 @@ export function ProfileUser({ username }) {
   }, [username]);
 
   return (
-    <ProfileUserContainer>
+    <ProfileUserContainer themeMode={themeMode}>
       {username.length > 0 ? (
         error.length > 0 ? (
           <h1>{error}</h1>
         ) : (
           <>
-            <ImageContainer>
+            <ImageContainer themeMode={themeMode}>
               <img src={userInformations.avatar_url} alt="" />
             </ImageContainer>
-            <InfoContainer>
+            <InfoContainer themeMode={themeMode}>
               <div className="nameInfo">
                 <div className="name">
                   <h1>{userInformations.name}</h1>
-                  <span>{userInformations.username}</span>
+                  <span>@{userInformations.username}</span>
                 </div>
                 <span className="date">
                   Joined {userInformations.created_at}
@@ -85,24 +85,24 @@ export function ProfileUser({ username }) {
                 <div className="personal__infos">
                   <div>
                     <div className="location">
-                      <MapPin color="#2778FF" strokeWidth={1.5} size={24} />
+                      <MapPin color={userInformations.location ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
                       <span>
-                        {userInformations.location || "No location available"}
+                        {userInformations.location || "Not available"}
                       </span>
                     </div>
                     <div className="link">
-                      <Link color="#2778FF" strokeWidth={1.5} size={24} />
-                      <span>{userInformations.blog || "No blog"}</span>
+                      <Link color={userInformations.blog ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <span>{userInformations.blog || "Not available"}</span>
                     </div>
                   </div>
                   <div>
                     <div className="twitter">
-                      <Twitter color="#2778FF" strokeWidth={1.5} size={24} />
-                      <span>{userInformations.twitter || "No twitter"}</span>
+                      <Twitter color={userInformations.twitter ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <span>{userInformations.twitter || "Not available"}</span>
                     </div>
                     <div className="company">
-                      <Briefcase color="#2778FF" strokeWidth={1.5} size={24} />
-                      <span>{userInformations.company || "No company"}</span>
+                      <Briefcase color={userInformations.company ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <span>{userInformations.company || "Not available"}</span>
                     </div>
                   </div>
                 </div>

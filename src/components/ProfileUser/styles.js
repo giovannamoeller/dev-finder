@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ProfileUserContainer = styled.section`
   padding: 3rem;
@@ -6,8 +6,14 @@ export const ProfileUserContainer = styled.section`
   display: flex;
   margin-top: 3rem;
   border-radius: 0.5rem;
-  background: #1F2A48;
-  box-shadow: 0px 100px 80px rgba(12, 12, 37, 0.11), 0px 64.8148px 46.8519px rgba(12, 12, 37, 0.0835185), 0px 38.5185px 25.4815px rgba(12, 12, 37, 0.0668148), 0px 20px 13px rgba(12, 12, 37, 0.055), 0px 8.14815px 6.51852px rgba(12, 12, 37, 0.0431852), 0px 1.85185px 3.14815px rgba(12, 12, 37, 0.0264815);
+
+  ${({ theme }) => {
+    return css`
+      background: ${theme.backgroundContainer};
+      box-shadow: ${theme.boxShadow};
+      color: ${theme.titleColor};
+    `;
+  }}
 `;
 
 export const ImageContainer = styled.div`
@@ -30,27 +36,37 @@ export const InfoContainer = styled.div`
     align-items: center;
     margin-bottom: 2rem;
     span {
-      color: #2778FF;
       &.date {
-        color: #A4A4A4;
+        color: #a4a4a4;
       }
+      color: #2778ff;
     }
   }
 
   & .profileInfo {
     span {
-      color: #A4A4A4;
+      ${({ theme }) => {
+        return css`
+          color: ${theme.defaultColor};
+        `;
+      }}
     }
 
     .profile__infos {
       margin-top: 2rem;
-      background: #151C30;
+      ${({ theme }) => {
+        return css`
+          background: ${theme.profileBackground};
+        `;
+      }}
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       text-align: center;
       padding: 1rem;
       border-radius: 0.5rem;
-      .repos, .followers, .following {
+      .repos,
+      .followers,
+      .following {
         display: flex;
         flex-direction: column;
         strong {

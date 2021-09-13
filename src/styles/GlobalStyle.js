@@ -9,8 +9,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: #151C30;
-    color: #FFF;
     width: 100%;
     height: 100vh;
     display: flex;
