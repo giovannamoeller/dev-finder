@@ -36,7 +36,6 @@ export const InputContainer = styled.form`
     border: none;
     cursor: pointer;
     border-radius: 0.5rem;
-    font-size: 1rem;
     color: #FFF;
     transition: background 0.3s ease-in-out;
 
@@ -46,7 +45,10 @@ export const InputContainer = styled.form`
   }
 
   svg {
-    margin: 0 2rem;
+    margin: 0 2rem; 
+    @media screen and (max-width: 520px) {
+      margin: 0 1rem; 
+    }
   }
 `;
 
