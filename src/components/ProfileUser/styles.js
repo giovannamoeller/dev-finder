@@ -7,11 +7,11 @@ export const ProfileUserContainer = styled.section`
   margin-top: 3rem;
   border-radius: 0.5rem;
 
-  ${({ theme, themeMode }) => {
+  ${({ theme }) => {
     return css`
-      background: ${theme[themeMode.mode].backgroundContainer};
-      box-shadow: ${theme[themeMode.mode].boxShadow};
-      color: ${theme[themeMode.mode].titleColor};
+      background: ${theme.backgroundContainer};
+      box-shadow: ${theme.boxShadow};
+      color: ${theme.titleColor};
     `;
   }}
 `;
@@ -45,18 +45,18 @@ export const InfoContainer = styled.div`
 
   & .profileInfo {
     span {
-      ${({ theme, themeMode }) => {
+      ${({ theme }) => {
         return css`
-          color: ${theme[themeMode.mode].defaultColor};
+          color: ${theme.defaultColor};
         `;
       }}
     }
 
     .profile__infos {
       margin-top: 2rem;
-      ${({ theme, themeMode }) => {
+      ${({ theme }) => {
         return css`
-          background: ${theme[themeMode.mode].profileBackground};
+          background: ${theme.profileBackground};
         `;
       }}
       display: grid;

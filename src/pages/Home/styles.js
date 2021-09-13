@@ -5,9 +5,9 @@ export const Container = styled.main`
 `;
 
 export const Box = styled.div`
-  ${({ theme, themeMode }) => {
+  ${({ theme }) => {
     return css`
-      background: ${theme[themeMode.mode].background};
+      background: ${theme.background};
     `;
   }}
   width: 100vw;

@@ -16,12 +16,12 @@ export function Home() {
   });
 
   return (
-      <ThemeProvider theme={theme}>
-        <Box themeMode={themeMode}>
+      <ThemeProvider theme={themeMode.mode === 'light' ? theme.light : theme.dark}>
+        <Box>
           <Container>
             <Header themeMode={themeMode} setThemeMode={setThemeMode}/>
-            <Input setUsername={setUsername} themeMode={themeMode}/>
-            <ProfileUser username={username} themeMode={themeMode}/>
+            <Input setUsername={setUsername}/>
+            <ProfileUser username={username}/>
           </Container>
         </Box>
       </ThemeProvider>

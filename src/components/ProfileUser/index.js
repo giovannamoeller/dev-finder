@@ -2,7 +2,7 @@ import { ProfileUserContainer, ImageContainer, InfoContainer } from "./styles";
 import { MapPin, Link, Twitter, Briefcase } from "react-feather";
 import { useState, useEffect } from "react";
 
-export function ProfileUser({ username, themeMode }) {
+export function ProfileUser({ username, themeMode, ...props }) {
   const [userInformations, setUserInformations] = useState({});
   const [error, setError] = useState("");
 
@@ -10,9 +10,7 @@ export function ProfileUser({ username, themeMode }) {
     async function fetchAPI() {
       const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
-
-      console.log(data)
-
+      
       if (data.message === "Not Found") {
         setError("User not found.");
         return;

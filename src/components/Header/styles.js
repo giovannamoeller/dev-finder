@@ -6,9 +6,10 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   margin-bottom: 3rem;
   span {
-    ${({ theme, themeMode }) => {
+    ${({ theme }) => {
+      console.log(theme)
       return css`
-        color: ${theme[themeMode.mode].headerColor};
+        color: ${theme.headerColor};
       `;
     }}
     display: flex;
