@@ -11,6 +11,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
+    cursor: pointer;
     svg {
       margin-left: 1rem;
     }
