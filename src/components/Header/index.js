@@ -11,19 +11,13 @@ export function Header() {
   });
 
   function handleChangeThemeMode() {
-    console.log('Entrou');
-
-    if(themeMode.mode === 'Light') {
-      setThemeMode({
-        mode: 'Dark',
-        icon: <Moon/>
-      });
-    } else {
-      setThemeMode({
-        mode: 'Light',
-        icon: <Sun/>
-      });
-    }
+    themeMode.mode === 'Light' ? setThemeMode({
+      mode: 'Dark',
+      icon: <Moon/>
+    }) : setThemeMode({
+      mode: 'Light',
+      icon: <Sun/>
+    });
   }
 
   return (
