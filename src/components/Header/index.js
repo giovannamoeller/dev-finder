@@ -6,18 +6,18 @@ import LogoLight from '../../assets/images/devfinder-light.svg';
 export function Header({themeMode, setThemeMode}) {
 
   function handleChangeThemeMode() {
-    themeMode.mode === 'Light' ? setThemeMode({
-      mode: 'Dark',
+    themeMode.mode === 'light' ? setThemeMode({
+      mode: 'dark',
       icon: <Moon/>
     }) : setThemeMode({
-      mode: 'Light',
+      mode: 'light',
       icon: <Sun/>
     });
   }
 
   return (
     <HeaderContainer themeMode={themeMode}>
-      {themeMode.mode === 'Light' ? (
+      {themeMode.mode === 'light' ? (
         <img src={LogoLight} alt="Logo - devfinder" />
       ) : (
         <img src={LogoDark} alt="Logo - devfinder" />

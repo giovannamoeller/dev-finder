@@ -5,12 +5,10 @@ export const Container = styled.main`
 `;
 
 export const Box = styled.div`
-  ${({ themeMode }) => {
-    return themeMode.mode === 'Light' ? css`
-      background: #F5F8FF;
-    ` : css`
-      background: #151C30;
-    `
+  ${({ theme, themeMode }) => {
+    return css`
+      background: ${theme[themeMode.mode].background};
+    `;
   }}
   width: 100vw;
   height: 100vh;

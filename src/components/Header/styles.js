@@ -5,14 +5,11 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   margin-bottom: 3rem;
-
   span {
-    ${({ themeMode }) => {
-      return themeMode.mode === 'Light' ? css`
-        color: #151C30;
-      ` : css`
-        color: #FFFFFF;
-      `
+    ${({ theme, themeMode }) => {
+      return css`
+        color: ${theme[themeMode.mode].headerColor};
+      `;
     }}
     display: flex;
     align-items: center;
