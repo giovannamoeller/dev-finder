@@ -10,7 +10,7 @@ export const ProfileUserContainer = styled.section`
     span {
       font-size: 85%;
     }
-    .search-user {
+    .invalid {
       font-size: 110%;
     }
   }

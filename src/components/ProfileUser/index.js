@@ -47,7 +47,7 @@ export function ProfileUser({ username, themeMode, ...props }) {
     <ProfileUserContainer>
       {username.length > 0 ? (
         error.length > 0 ? (
-          <h1>{error}</h1>
+          <h1 className="invalid">{error}</h1>
         ) : (
           <>
             <ImageContainer>
@@ -129,7 +129,7 @@ export function ProfileUser({ username, themeMode, ...props }) {
           </>
         )
       ) : (
-        <h1 className="search-user">Search for a GitHub User!</h1>
+        <h1 className="invalid">Search for a GitHub User!</h1>
       )}
     </ProfileUserContainer>
   );
