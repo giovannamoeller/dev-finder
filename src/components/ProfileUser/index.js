@@ -87,24 +87,24 @@ export function ProfileUser({ username, themeMode }) {
                 <div className="personal__infos">
                   <div>
                     <div className="location">
-                      <MapPin color="#2778FF" strokeWidth={1.5} size={24} />
+                      <MapPin color={userInformations.location ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
                       <span>
-                        {userInformations.location || "No location available"}
+                        {userInformations.location || "Not available"}
                       </span>
                     </div>
                     <div className="link">
-                      <Link color="#2778FF" strokeWidth={1.5} size={24} />
-                      <span>{userInformations.blog || "No blog"}</span>
+                      <Link color={userInformations.blog ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <span>{userInformations.blog || "Not available"}</span>
                     </div>
                   </div>
                   <div>
                     <div className="twitter">
-                      <Twitter color="#2778FF" strokeWidth={1.5} size={24} />
-                      <span>{userInformations.twitter || "No twitter"}</span>
+                      <Twitter color={userInformations.twitter ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <span>{userInformations.twitter || "Not available"}</span>
                     </div>
                     <div className="company">
-                      <Briefcase color="#2778FF" strokeWidth={1.5} size={24} />
-                      <span>{userInformations.company || "No company"}</span>
+                      <Briefcase color={userInformations.company ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <span>{userInformations.company || "Not available"}</span>
                     </div>
                   </div>
                 </div>
