@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -7,6 +7,13 @@ export const HeaderContainer = styled.header`
   margin-bottom: 3rem;
 
   span {
+    ${({ themeMode }) => {
+      return themeMode.mode === 'Light' ? css`
+        color: #151C30;
+      ` : css`
+        color: #FFFFFF;
+      `
+    }}
     display: flex;
     align-items: center;
     text-transform: uppercase;

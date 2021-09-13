@@ -2,7 +2,7 @@ import { ProfileUserContainer, ImageContainer, InfoContainer } from "./styles";
 import { MapPin, Link, Twitter, Briefcase } from "react-feather";
 import { useState, useEffect } from "react";
 
-export function ProfileUser({ username }) {
+export function ProfileUser({ username, themeMode }) {
   const [userInformations, setUserInformations] = useState({});
   const [error, setError] = useState("");
 
@@ -10,6 +10,8 @@ export function ProfileUser({ username }) {
     async function fetchAPI() {
       const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
+
+      console.log(data)
 
       if (data.message === "Not Found") {
         setError("User not found.");
@@ -25,7 +27,7 @@ export function ProfileUser({ username }) {
 
       setUserInformations({
         name: data.name,
-        username: data.userName,
+        username: data.login,
         bio: data.bio,
         created_at,
         avatar_url: data.avatar_url,
@@ -44,20 +46,20 @@ export function ProfileUser({ username }) {
   }, [username]);
 
   return (
-    <ProfileUserContainer>
+    <ProfileUserContainer themeMode={themeMode}>
       {username.length > 0 ? (
         error.length > 0 ? (
           <h1>{error}</h1>
         ) : (
           <>
-            <ImageContainer>
+            <ImageContainer themeMode={themeMode}>
               <img src={userInformations.avatar_url} alt="" />
             </ImageContainer>
-            <InfoContainer>
+            <InfoContainer themeMode={themeMode}>
               <div className="nameInfo">
                 <div className="name">
                   <h1>{userInformations.name}</h1>
-                  <span>{userInformations.username}</span>
+                  <span>@{userInformations.username}</span>
                 </div>
                 <span className="date">
                   Joined {userInformations.created_at}
