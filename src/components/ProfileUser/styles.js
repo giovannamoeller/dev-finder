@@ -104,6 +104,7 @@ export const InfoContainer = styled.div`
         flex-direction: column;
         strong {
           margin-top: 1rem;
+          font-size: 1.5rem;
         }
       }
       

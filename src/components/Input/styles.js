@@ -21,6 +21,10 @@ export const InputContainer = styled.form`
     background: none;
     outline: none;
     border: none;
+    font-size: 1rem;
+    @media screen and (max-width: 520px) {
+      font-size: 0.8rem; 
+    }
     ${({ theme }) => {
       return css`
         color: ${theme.defaultColor};
@@ -36,6 +40,10 @@ export const InputContainer = styled.form`
     border: none;
     cursor: pointer;
     border-radius: 0.5rem;
+    font-size: 1rem;
+    @media screen and (max-width: 520px) {
+      font-size: 0.8rem; 
+    }
     color: #FFF;
     transition: background 0.3s ease-in-out;
 
