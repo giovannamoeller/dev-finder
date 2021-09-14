@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
 export const ProfileUserContainer = styled.section`
-  padding: 3rem;
-  width: 100%;
+  padding: 2rem;
   display: flex;
+  width: 100%;
   margin-top: 3rem;
   border-radius: 0.5rem;
 
@@ -14,12 +14,31 @@ export const ProfileUserContainer = styled.section`
       color: ${theme.titleColor};
     `;
   }}
+
+  @media screen and (max-width: 920px) {
+    span {
+      font-size: 85%;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    padding: 1.5rem;
+    justify-content: center;
+    .invalid {
+      font-size: 110%;
+    }
+  }
 `;
 
 export const ImageContainer = styled.div`
   max-width: 20%;
   height: 100%;
   margin-right: 3rem;
+
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+
   img {
     width: 100%;
     border-radius: 50%;
@@ -30,8 +49,25 @@ export const InfoContainer = styled.div`
   height: 100%;
   width: 80%;
 
+  @media screen and (max-width: 520px) {
+    width: 100%;
+  }
+
   & .nameInfo {
+
+    .image {
+      display: none;
+    }
+
     display: flex;
+    @media screen and (max-width: 780px) {
+      flex-direction: column;
+      align-items: flex-start;
+      span.date {
+        margin-top: 0.5rem;
+      }
+    }
+
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
@@ -40,6 +76,22 @@ export const InfoContainer = styled.div`
         color: #a4a4a4;
       }
       color: #2778ff;
+    }
+
+    @media screen and (max-width: 720px) {
+      .image {
+        display: inline;
+        width: 36%;
+        margin-right: 2rem;
+        img {
+          width: 100%;
+          border-radius: 50%;
+        }
+      }
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
     }
   }
 
@@ -53,6 +105,7 @@ export const InfoContainer = styled.div`
     }
 
     .profile__infos {
+      width: 100%;
       margin-top: 2rem;
       ${({ theme }) => {
         return css`
@@ -64,14 +117,18 @@ export const InfoContainer = styled.div`
       text-align: center;
       padding: 1rem;
       border-radius: 0.5rem;
+
       .repos,
       .followers,
       .following {
         display: flex;
         flex-direction: column;
         strong {
-          font-size: 1.5rem;
           margin-top: 1rem;
+          @media screen and (max-width: 520px) {
+            font-size: 1.2rem;
+          }
+          font-size: 1.5rem;
         }
       }
     }
@@ -87,6 +144,15 @@ export const InfoContainer = styled.div`
         gap: 1rem;
         margin-bottom: 2rem;
         font-size: 0.9rem;
+      }
+
+      @media screen and (max-width: 780px) {
+        margin-top: 2rem;
+        display: block;
+
+        div > div {
+          margin-bottom: 1rem;
+        }
       }
     }
   }

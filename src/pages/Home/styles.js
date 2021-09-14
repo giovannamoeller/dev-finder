@@ -5,6 +5,7 @@ export const Container = styled.main`
 `;
 
 export const Box = styled.div`
+  padding: 1.5rem;
   ${({ theme }) => {
     return css`
       background: ${theme.background};

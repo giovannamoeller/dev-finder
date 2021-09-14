@@ -10,7 +10,7 @@ export function ProfileUser({ username, themeMode, ...props }) {
     async function fetchAPI() {
       const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
-      
+
       if (data.message === "Not Found") {
         setError("User not found.");
         return;
@@ -44,24 +44,29 @@ export function ProfileUser({ username, themeMode, ...props }) {
   }, [username]);
 
   return (
-    <ProfileUserContainer themeMode={themeMode}>
+    <ProfileUserContainer>
       {username.length > 0 ? (
         error.length > 0 ? (
-          <h1>{error}</h1>
+          <h1 className="invalid">{error}</h1>
         ) : (
           <>
-            <ImageContainer themeMode={themeMode}>
+            <ImageContainer>
               <img src={userInformations.avatar_url} alt="" />
             </ImageContainer>
-            <InfoContainer themeMode={themeMode}>
+            <InfoContainer>
               <div className="nameInfo">
-                <div className="name">
-                  <h1>{userInformations.name}</h1>
-                  <span>@{userInformations.username}</span>
+                <div className="image">
+                  <img src={userInformations.avatar_url} alt="" />
                 </div>
-                <span className="date">
-                  Joined {userInformations.created_at}
-                </span>
+                <div>
+                  <div className="name">
+                    <h1>{userInformations.name}</h1>
+                    <span>@{userInformations.username}</span>
+                  </div>
+                  <span className="date">
+                    Joined {userInformations.created_at}
+                  </span>
+                </div>
               </div>
 
               <div className="profileInfo">
@@ -85,23 +90,41 @@ export function ProfileUser({ username, themeMode, ...props }) {
                 <div className="personal__infos">
                   <div>
                     <div className="location">
-                      <MapPin color={userInformations.location ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <MapPin
+                        color={
+                          userInformations.location ? "#2778FF" : "#A4A4A4"
+                        }
+                        strokeWidth={1.5}
+                        size={24}
+                      />
                       <span>
                         {userInformations.location || "Not available"}
                       </span>
                     </div>
                     <div className="link">
-                      <Link color={userInformations.blog ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <Link
+                        color={userInformations.blog ? "#2778FF" : "#A4A4A4"}
+                        strokeWidth={1.5}
+                        size={24}
+                      />
                       <span>{userInformations.blog || "Not available"}</span>
                     </div>
                   </div>
                   <div>
                     <div className="twitter">
-                      <Twitter color={userInformations.twitter ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <Twitter
+                        color={userInformations.twitter ? "#2778FF" : "#A4A4A4"}
+                        strokeWidth={1.5}
+                        size={24}
+                      />
                       <span>{userInformations.twitter || "Not available"}</span>
                     </div>
                     <div className="company">
-                      <Briefcase color={userInformations.company ? "#2778FF" : "#A4A4A4"} strokeWidth={1.5} size={24} />
+                      <Briefcase
+                        color={userInformations.company ? "#2778FF" : "#A4A4A4"}
+                        strokeWidth={1.5}
+                        size={24}
+                      />
                       <span>{userInformations.company || "Not available"}</span>
                     </div>
                   </div>
@@ -111,7 +134,7 @@ export function ProfileUser({ username, themeMode, ...props }) {
           </>
         )
       ) : (
-        <h1>Search for a GitHub User!</h1>
+        <h1 className="invalid">Search for a GitHub User!</h1>
       )}
     </ProfileUserContainer>
   );

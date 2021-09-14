@@ -7,7 +7,6 @@ export const HeaderContainer = styled.header`
   margin-bottom: 3rem;
   span {
     ${({ theme }) => {
-      console.log(theme)
       return css`
         color: ${theme.headerColor};
       `;
@@ -19,6 +18,19 @@ export const HeaderContainer = styled.header`
     cursor: pointer;
     svg {
       margin-left: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    img {
+      width: 24%;
+    }
+    span {
+      font-size: 80%;
+    }
+
+    svg {
+      width: 20px;
     }
   }
 `;

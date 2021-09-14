@@ -21,6 +21,10 @@ export const InputContainer = styled.form`
     background: none;
     outline: none;
     border: none;
+    font-size: 1rem;
+    @media screen and (max-width: 920px) {
+      font-size: 80%;
+    }
     ${({ theme }) => {
       return css`
         color: ${theme.defaultColor};
@@ -37,6 +41,9 @@ export const InputContainer = styled.form`
     cursor: pointer;
     border-radius: 0.5rem;
     font-size: 1rem;
+    @media screen and (max-width: 920px) {
+      font-size: 0.8rem; 
+    }
     color: #FFF;
     transition: background 0.3s ease-in-out;
 
@@ -46,7 +53,10 @@ export const InputContainer = styled.form`
   }
 
   svg {
-    margin: 0 2rem;
+    margin: 0 2rem; 
+    @media screen and (max-width: 520px) {
+      margin: 0 1rem; 
+    }
   }
 `;
 
