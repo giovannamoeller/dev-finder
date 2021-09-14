@@ -1,18 +1,22 @@
 import { ProfileUserContainer, ImageContainer, InfoContainer } from "./styles";
 import { MapPin, Link, Twitter, Briefcase } from "react-feather";
 import { useState, useEffect } from "react";
+import { Loading } from '../Loading';
 
-export function ProfileUser({ username, themeMode, ...props }) {
+export function ProfileUser({ username }) {
   const [userInformations, setUserInformations] = useState({});
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     async function fetchAPI() {
+      setLoading(true);
       const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
 
       if (data.message === "Not Found") {
         setError("User not found.");
+        setLoading(false);
         return;
       }
       setError("");
@@ -38,12 +42,16 @@ export function ProfileUser({ username, themeMode, ...props }) {
         blog: data.blog,
         company: data.company,
       });
+
+      setLoading(false);
     }
 
     if (username.length > 0) fetchAPI();
   }, [username]);
 
   return (
+    <>
+    <Loading isVisible={loading}/>
     <ProfileUserContainer>
       {username.length > 0 ? (
         error.length > 0 ? (
@@ -137,5 +145,6 @@ export function ProfileUser({ username, themeMode, ...props }) {
         <h1 className="invalid">Search for a GitHub User!</h1>
       )}
     </ProfileUserContainer>
+    </>
   );
 }
