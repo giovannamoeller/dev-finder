@@ -66,7 +66,7 @@ export function ProfileUser({ username }) {
                 <div className="image">
                   <img src={userInformations.avatar_url} alt="" />
                 </div>
-                <div>
+                <div className="profile">
                   <div className="name">
                     <h1>{userInformations.name}</h1>
                     <span>@{userInformations.username}</span>

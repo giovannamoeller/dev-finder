@@ -78,6 +78,15 @@ export const InfoContainer = styled.div`
       color: #2778ff;
     }
 
+    & .profile {
+      @media screen and (min-width: 720px) {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
     @media screen and (max-width: 720px) {
       .image {
         display: inline;
