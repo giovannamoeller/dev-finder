@@ -2,19 +2,6 @@ import styled, { css } from "styled-components";
 
 export const ProfileUserContainer = styled.section`
   padding: 2rem;
-
-  @media screen and (max-width: 520px) {
-    padding: 1.5rem;
-    flex-direction: column;
-    align-items: center;
-    span {
-      font-size: 85%;
-    }
-    .invalid {
-      font-size: 110%;
-    }
-  }
-
   display: flex;
   width: 100%;
   margin-top: 3rem;
@@ -27,6 +14,20 @@ export const ProfileUserContainer = styled.section`
       color: ${theme.titleColor};
     `;
   }}
+
+  @media screen and (max-width: 920px) {
+    span {
+      font-size: 85%;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    padding: 1.5rem;
+    justify-content: center;
+    .invalid {
+      font-size: 110%;
+    }
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -34,7 +35,7 @@ export const ImageContainer = styled.div`
   height: 100%;
   margin-right: 3rem;
 
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 720px) {
     display: none;
   }
 
@@ -53,9 +54,13 @@ export const InfoContainer = styled.div`
   }
 
   & .nameInfo {
-    display: flex;
 
-    @media screen and (max-width: 520px) {
+    .image {
+      display: none;
+    }
+
+    display: flex;
+    @media screen and (max-width: 780px) {
       flex-direction: column;
       align-items: flex-start;
       span.date {
@@ -71,6 +76,22 @@ export const InfoContainer = styled.div`
         color: #a4a4a4;
       }
       color: #2778ff;
+    }
+
+    @media screen and (max-width: 720px) {
+      .image {
+        display: inline;
+        width: 36%;
+        margin-right: 2rem;
+        img {
+          width: 100%;
+          border-radius: 50%;
+        }
+      }
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
     }
   }
 
@@ -104,16 +125,10 @@ export const InfoContainer = styled.div`
         flex-direction: column;
         strong {
           margin-top: 1rem;
+          @media screen and (max-width: 520px) {
+            font-size: 1.2rem;
+          }
           font-size: 1.5rem;
-        }
-      }
-      
-      @media screen and (max-width: 520px) {
-        strong {
-          font-size: 1.2rem;
-        }
-        span {
-          font-size: 80%;
         }
       }
     }
@@ -131,15 +146,14 @@ export const InfoContainer = styled.div`
         font-size: 0.9rem;
       }
 
-      @media screen and (max-width: 520px) {
+      @media screen and (max-width: 780px) {
         margin-top: 2rem;
         display: block;
-        
+
         div > div {
           margin-bottom: 1rem;
         }
       }
-
     }
   }
 `;

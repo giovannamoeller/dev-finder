@@ -55,13 +55,18 @@ export function ProfileUser({ username, themeMode, ...props }) {
             </ImageContainer>
             <InfoContainer>
               <div className="nameInfo">
-                <div className="name">
-                  <h1>{userInformations.name}</h1>
-                  <span>@{userInformations.username}</span>
+                <div className="image">
+                  <img src={userInformations.avatar_url} alt="" />
                 </div>
-                <span className="date">
-                  Joined {userInformations.created_at}
-                </span>
+                <div>
+                  <div className="name">
+                    <h1>{userInformations.name}</h1>
+                    <span>@{userInformations.username}</span>
+                  </div>
+                  <span className="date">
+                    Joined {userInformations.created_at}
+                  </span>
+                </div>
               </div>
 
               <div className="profileInfo">

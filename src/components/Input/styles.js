@@ -22,8 +22,8 @@ export const InputContainer = styled.form`
     outline: none;
     border: none;
     font-size: 1rem;
-    @media screen and (max-width: 520px) {
-      font-size: 0.8rem; 
+    @media screen and (max-width: 920px) {
+      font-size: 80%;
     }
     ${({ theme }) => {
       return css`
@@ -41,7 +41,7 @@ export const InputContainer = styled.form`
     cursor: pointer;
     border-radius: 0.5rem;
     font-size: 1rem;
-    @media screen and (max-width: 520px) {
+    @media screen and (max-width: 920px) {
       font-size: 0.8rem; 
     }
     color: #FFF;
