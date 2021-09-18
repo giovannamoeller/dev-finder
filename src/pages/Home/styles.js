@@ -5,6 +5,7 @@ export const Container = styled.main`
 `;
 
 export const Box = styled.div`
+  transition: all .3s;
   padding: 1.5rem;
   ${({ theme }) => {
     return css`
